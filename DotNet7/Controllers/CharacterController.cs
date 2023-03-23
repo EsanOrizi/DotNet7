@@ -51,5 +51,20 @@ namespace DotNet7.Controllers
 
             return Ok(response);
         }
+
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> DeleteCharacter(int id)
+        {
+            var response = await _characterService.DeleteCharacter(id);
+            if (response.Data is null)
+            {
+                return NotFound(response);
+            }
+
+            return Ok(response);
+        }
+
     }
 }
