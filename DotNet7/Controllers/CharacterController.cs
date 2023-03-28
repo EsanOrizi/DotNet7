@@ -1,11 +1,13 @@
 ﻿using DotNet7.Dtos.Character;
 using DotNet7.Models;
 using DotNet7.Services.CharacterService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Writers;
 
 namespace DotNet7.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase
