@@ -23,5 +23,11 @@ namespace DotNet7.Controllers
             return Ok(await fightService.WeaponAttack(request));
         }
 
+        [HttpPost("Skill")]
+        public async Task<ActionResult<ServiceResponse<AttackResultDto>>> SkillAttack(SkillAttackDto request)
+        {
+            return Ok(await fightService.SkillAtack(request));
+        }
+
     }
 }

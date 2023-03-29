@@ -6,5 +6,7 @@ namespace DotNet7.Services.FightService
     public interface IFightService
     {
         Task<ServiceResponse<AttackResultDto>> WeaponAttack(WeaponAttackDto request);
+        Task<ServiceResponse<AttackResultDto>> SkillAtack(SkillAttackDto request);
+
     }
 }
