@@ -1,4 +1,5 @@
-﻿using DotNet7.Data;
+﻿using AutoMapper;
+using DotNet7.Data;
 using DotNet7.Dtos.Fight;
 using DotNet7.Models;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +9,12 @@ namespace DotNet7.Services.FightService
     public class FightService : IFightService
     {
         private readonly DataContext _context;
+        private readonly Mapper mapper;
 
-        public FightService(DataContext context)
+        public FightService(DataContext context, IMapper _mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<ServiceResponse<FightResultDto>> Fight(FightRequestDto request)
@@ -199,6 +202,23 @@ namespace DotNet7.Services.FightService
             return damage;
         }
 
-     
+
+        public async Task<ServiceResponse<List<HighscoreDto>>> GetHighscore()
+        {
+            var characters = await _context.Characters
+                .Where(c => c.Fights > 0)
+                .OrderByDescending(c => c.Victories)
+                .ThenBy(c => c.Defeats)
+                .ToListAsync();
+
+            var response = new ServiceResponse<List<HighscoreDto>>()
+            {
+                Data = characters.Select(c => mapper.Map<HighscoreDto>(c)).ToList()
+            };
+
+            return response;
+        }
+
+
     }
 }

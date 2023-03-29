@@ -143,7 +143,7 @@ namespace DotNet7.Services.CharacterService
                     .Include(c => c.Weapon)
                     .Include(c => c.Skills)
                     .FirstOrDefaultAsync(c => c.Id == newCharacterSkill.CharacterId &&
-                    c.User.Id == GetUserId());
+                    c.User!.Id == GetUserId());
 
                 if (character == null)
                 {
