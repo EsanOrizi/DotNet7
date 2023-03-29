@@ -1,4 +1,5 @@
 ﻿using DotNet7.Dtos.Character;
+using DotNet7.Dtos.Character.dotnet_rpg.Dtos.Character;
 using DotNet7.Models;
 using DotNet7.Services.CharacterService;
 using Microsoft.AspNetCore.Authorization;
@@ -66,6 +67,12 @@ namespace DotNet7.Controllers
             }
 
             return Ok(response);
+        }
+
+        [HttpPost("Skill")]
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> AddCharacterSkill(AddCharacterSkillDto newCharacterSkill)
+        {
+            return Ok(await _characterService.AddCharacterSkill(newCharacterSkill));
         }
 
     }
