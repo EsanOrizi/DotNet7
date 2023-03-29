@@ -11,5 +11,7 @@
         public RpgClass Class { get; set; } = RpgClass.Knight;
         public User? User { get; set; }
 
+        public Weapon? weapon { get; set; }
+
     }
 }
