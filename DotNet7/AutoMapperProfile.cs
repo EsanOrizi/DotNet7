@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DotNet7.Dtos.Character;
+using DotNet7.Dtos.Weapon;
 using DotNet7.Models;
 
 namespace DotNet7
@@ -10,6 +11,7 @@ namespace DotNet7
         {
             CreateMap<Character, GetCharacterDto>();
             CreateMap<AddCharacterDto, Character>();
+            CreateMap<Weapon, GetWeaponDto>();
         }
     }
 }
